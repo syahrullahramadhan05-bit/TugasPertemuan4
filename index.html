@@ -7,6 +7,12 @@
 </head>
 <body>
     <h1>Belajar Java Script</h1>
+
+    <!-- Tempat menampilkan sapaan -->
+    <div id="sapaan"></div>
+
+    <button onclick="myGame()">Mulai Main</button>
+
     <script>
 
         // let a = 10;
@@ -24,40 +30,69 @@
             let mulai;
             let nama = prompt("Masukkan nama Anda: ");
 
+            // Validasi: jika nama kosong atau dibatalkan
+            if (!nama || nama.trim() === "") {
+                alert("Nama tidak boleh kosong!");
+                return;
+            }
+
+            // Tampilkan sapaan di halaman
+            let elSapaan = document.getElementById("sapaan");
+            elSapaan.textContent = "Halo, " + nama + "! Selamat datang di kuis!";
+
+            // Sambut user dengan alert sebelum memulai
+            alert("Halo, " + nama + "!\nSelamat datang! Mari kita mulai permainan.");
+
             while (true) {
                 let lanjut = confirm("Lanjutkan Bermain?")
                 
                 if (lanjut == true) {
 
-                    let quest1 = prompt("2 + 2 = ?");
-                    if(quest1 == 4) {
-                        alert("pintarr");
-                    } else {
-                        alert("Salah");
-                        alert(nama + " telah dikeluarkan")
-                        break;
+                    // Soal 1 - ulangi jika salah dan memilih lanjut
+                    while (true) {
+                        let quest1 = prompt("Soal 1: 2 + 2 = ?");
+                        if (quest1 == 4) {
+                            alert("Pintar, " + nama + "! Jawaban kamu benar!");
+                            break;
+                        } else {
+                            alert("Salah!");
+                            let coba1 = confirm("Mau coba lagi soal 1?\n\nOK = Lanjut (coba lagi)\nCancel = Keluar");
+                            if (coba1 == false) {
+                                alert(nama + " telah dikeluarkan dari permainan. Sampai jumpa!");
+                                elSapaan.textContent = "Maaf, " + nama + ". Kamu telah dikeluarkan!";
+                                return;
+                            }
+                        }
                     }
 
-                    let quest2 = prompt("20 * 9 = ?");
-                    if (quest2 == 108) {
-                        alert("benar lagi..");
-                        alert("Mantappp semua jawaban kamu benar");
-                    } else {
-                        alert("Salah");
-                        alert(nama + " telah dikeluarkan")
-                        break;
+                    // Soal 2 - ulangi jika salah dan memilih lanjut
+                    while (true) {
+                        let quest2 = prompt("Soal 2: 20 * 9 = ?");
+                        if (quest2 == 180) {
+                            alert("Benar lagi!");
+                            alert("Mantap, " + nama + "! Semua jawaban kamu benar!");
+                            elSapaan.textContent = "Selamat, " + nama + "! Kamu menjawab semua soal dengan benar!";
+                            break;
+                        } else {
+                            alert("Salah!");
+                            let coba2 = confirm("Mau coba lagi soal 2?\n\nOK = Lanjut (coba lagi)\nCancel = Keluar");
+                            if (coba2 == false) {
+                                alert(nama + " telah dikeluarkan dari permainan. Sampai jumpa!");
+                                elSapaan.textContent = "Maaf, " + nama + ". Kamu telah dikeluarkan!";
+                                return;
+                            }
+                        }
                     }
+
                 } else {
-                    mulai = "Anda berhenti bermain"
-                    alert(mulai);
+                    mulai = "Anda berhenti bermain";
+                    alert("Oke, " + nama + ". " + mulai + ". Sampai jumpa! 👋");
+                    elSapaan.textContent = "👋 Sampai jumpa, " + nama + "!";
                     break;
                 }
             }
         }
 
     </script>
-
-    <button onclick="myGame()">Mulai Main</button>
 </body>
-
 </html>
