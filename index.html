@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar J-Script</title>
+</head>
+<body>
+    <h1>Belajar Java Script</h1>
+    <script>
+
+        // let a = 10;
+        // console.log(a);
+        // a = 12;
+        // console.log(a)
+       
+        // let nama = prompt("Isi nama anda ....")
+        // alert("Hai " + nama)
+
+        // let b = confirm()
+        // console.log(b)
+
+        function myGame() {
+            let mulai;
+            let nama = prompt("Masukkan nama Anda: ");
+
+            while (true) {
+                let lanjut = confirm("Lanjutkan Bermain?")
+                
+                if (lanjut == true) {
+
+                    let quest1 = prompt("2 + 2 = ?");
+                    if(quest1 == 4) {
+                        alert("pintarr");
+                    } else {
+                        alert("Salah");
+                        alert(nama + " telah dikeluarkan")
+                        break;
+                    }
+
+                    let quest2 = prompt("20 * 9 = ?");
+                    if (quest2 == 108) {
+                        alert("benar lagi..");
+                        alert("Mantappp semua jawaban kamu benar");
+                    } else {
+                        alert("Salah");
+                        alert(nama + " telah dikeluarkan")
+                        break;
+                    }
+                } else {
+                    mulai = "Anda berhenti bermain"
+                    alert(mulai);
+                    break;
+                }
+            }
+        }
+
+    </script>
+
+    <button onclick="myGame()">Mulai Main</button>
+</body>
+
+</html>
